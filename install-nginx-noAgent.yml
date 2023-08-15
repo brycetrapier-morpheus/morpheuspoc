@@ -1,0 +1,16 @@
+# Install NGINX no Morpheus Agent Command Bus
+---
+
+- name: Install
+  gather_facts: false
+  hosts: all
+  become: true
+  #  Assume root, to execute playbooks over sshpass
+  # connection: local
+  tasks: 
+
+    - name: Apt Install nginx
+      ansible.builtin.apt:
+        name: nginx
+        state: latest
+        update_cache: yes
