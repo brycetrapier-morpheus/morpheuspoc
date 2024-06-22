@@ -1,6 +1,5 @@
 ---
-
-- name: Install
+- name: Install NGINX
   gather_facts: false
   hosts: all
   #  become: true
@@ -8,7 +7,7 @@
   connection: local
   tasks: 
 
-    - name: Apt Install nginx
+    - name: APT Install nginx
       ansible.builtin.apt:
         name: nginx
         state: latest
