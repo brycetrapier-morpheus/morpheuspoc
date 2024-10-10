@@ -1,0 +1,21 @@
+---
+- name: Install Apache
+  gather_facts: false
+  hosts: all
+  become: true
+  # Assume root, to execute playbooks over sshpass
+  # connection: local
+  tasks:
+    - name: Update apt package cache
+      ansible.builtin.apt:
+        update_cache: yes
+
+    - name: Install or Upgrade Apache
+      ansible.builtin.apt:
+        name: apache2
+        state: latest
+
+    - name: Start Apache service
+      service:
+        name: apache2
+        state: started
